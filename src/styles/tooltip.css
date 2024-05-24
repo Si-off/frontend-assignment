@@ -1,0 +1,108 @@
+.tooltip-box {
+  position: absolute;
+  inset: 0 auto auto 0;
+  z-index: 1000;
+}
+
+.tooltip-content {
+  border-radius: 4px;
+  background-color: black;
+  color: white;
+  padding: 8px;
+}
+
+/* tooltip tails */
+.tail {
+  width: 0;
+  height: 0;
+  position: absolute;
+  border: 5px solid transparent;
+}
+
+/* top */
+.tail.top {
+  bottom: 0;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, 100%);
+  border-top-color: black;
+}
+
+.tail.topLeft {
+  bottom: 0;
+  transform: translate(-50%, 100%);
+  border-top-color: black;
+}
+
+.tail.topRight {
+  bottom: 0;
+  right: 0;
+  transform: translate(-50%, 100%);
+  border-top-color: black;
+}
+
+/* bottom */
+.tail.bottom {
+  top: 0;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, -100%);
+  border-bottom-color: black;
+}
+
+.tail.bottomLeft {
+  top: 0;
+  transform: translate(-50%, -100%);
+  border-bottom-color: black;
+}
+
+.tail.bottomRight {
+  top: 0;
+  right: 0;
+  transform: translate(-50%, -100%);
+  border-bottom-color: black;
+}
+
+/* left */
+.tail.left {
+  right: 0;
+  top: 50%;
+  bottom: 50%;
+  transform: translate(100%, -50%);
+  border-left-color: black;
+}
+
+.tail.leftTop {
+  right: 0;
+  transform: translate(100%, -50%);
+  border-left-color: black;
+}
+
+.tail.leftBottom {
+  right: 0;
+  bottom: 0;
+  transform: translate(100%, -50%);
+  border-left-color: black;
+}
+
+/* right */
+.tail.right {
+  left: 0;
+  top: 50%;
+  bottom: 50%;
+  transform: translate(-100%, -50%);
+  border-right-color: black;
+}
+
+.tail.rightTop {
+  left: 0;
+  transform: translate(-100%, -50%);
+  border-right-color: black;
+}
+
+.tail.rightBottom {
+  left: 0;
+  bottom: 0;
+  transform: translate(-100%, -50%);
+  border-right-color: black;
+}
