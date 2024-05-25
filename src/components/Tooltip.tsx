@@ -11,6 +11,7 @@ interface Props {
   leaveDelay?: number;
   disable?: boolean;
   gap?: number;
+  interactive?: boolean;
 }
 
 type Direction =
@@ -35,6 +36,7 @@ const Tooltip = ({
   dir = 'bottom',
   enterDelay = 0,
   leaveDelay = 0,
+  interactive = false,
 }: Props) => {
   const pivotRef = useRef<HTMLDivElement>(null);
   const targetRef = useRef<HTMLDivElement>(null);
@@ -58,6 +60,9 @@ const Tooltip = ({
     setShow(false, leaveDelay);
   };
 
+  const isJSXElement = React.isValidElement(content);
+  const tailStyle = isJSXElement ? { color: content.props.style?.backgroundColor } : {};
+
   return (
     <>
       <div
@@ -75,10 +80,10 @@ const Tooltip = ({
             ref={targetRef}
             className='tooltip-box'
             style={style}
-            onMouseEnter={showTooltip}
-            onMouseLeave={hideTooltip}>
-            <div className='tooltip-content'>
-              <span className={`tail ${dir}`} />
+            onMouseEnter={interactive ? showTooltip : undefined}
+            onMouseLeave={interactive ? hideTooltip : undefined}>
+            <div className={React.isValidElement(content) ? '' : 'tooltip-content'}>
+              <span className={`tail ${dir}`} style={tailStyle} />
               {content}
             </div>
           </div>,

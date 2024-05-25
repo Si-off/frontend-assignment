@@ -17,10 +17,9 @@
 
 /* tooltip tails */
 .tail {
-  width: 0;
-  height: 0;
   position: absolute;
   border: 5px solid transparent;
+  color: black;
 }
 
 /* top */
@@ -29,20 +28,20 @@
   left: 50%;
   right: 50%;
   transform: translate(-50%, 100%);
-  border-top-color: black;
+  border-top-color: inherit;
 }
 
 .tail.topLeft {
   bottom: 0;
   transform: translate(-50%, 100%);
-  border-top-color: black;
+  border-top-color: inherit;
 }
 
 .tail.topRight {
   bottom: 0;
   right: 0;
   transform: translate(-50%, 100%);
-  border-top-color: black;
+  border-top-color: inherit;
 }
 
 /* bottom */
@@ -51,20 +50,20 @@
   left: 50%;
   right: 50%;
   transform: translate(-50%, -100%);
-  border-bottom-color: black;
+  border-bottom-color: inherit;
 }
 
 .tail.bottomLeft {
   top: 0;
   transform: translate(-50%, -100%);
-  border-bottom-color: black;
+  border-bottom-color: inherit;
 }
 
 .tail.bottomRight {
   top: 0;
   right: 0;
   transform: translate(-50%, -100%);
-  border-bottom-color: black;
+  border-bottom-color: inherit;
 }
 
 /* left */
@@ -73,20 +72,20 @@
   top: 50%;
   bottom: 50%;
   transform: translate(100%, -50%);
-  border-left-color: black;
+  border-left-color: inherit;
 }
 
 .tail.leftTop {
   right: 0;
   transform: translate(100%, -50%);
-  border-left-color: black;
+  border-left-color: inherit;
 }
 
 .tail.leftBottom {
   right: 0;
   bottom: 0;
   transform: translate(100%, -50%);
-  border-left-color: black;
+  border-left-color: inherit;
 }
 
 /* right */
@@ -95,18 +94,18 @@
   top: 50%;
   bottom: 50%;
   transform: translate(-100%, -50%);
-  border-right-color: black;
+  border-right-color: inherit;
 }
 
 .tail.rightTop {
   left: 0;
   transform: translate(-100%, -50%);
-  border-right-color: black;
+  border-right-color: inherit;
 }
 
 .tail.rightBottom {
   left: 0;
   bottom: 0;
   transform: translate(-100%, -50%);
-  border-right-color: black;
+  border-right-color: inherit;
 }
