@@ -35,12 +35,12 @@ const Tooltip = ({
   enterDelay = 0,
   leaveDelay = 0,
 }: Props) => {
-  const tooltipRef = useRef<HTMLDivElement>(null);
+  const pivotRef = useRef<HTMLDivElement>(null);
   const targetRef = useRef<HTMLDivElement>(null);
 
   const { state: isShow, setDelayedState: setShow } = useDelayedState<boolean>(false);
   const [style, setStyle] = useState<CSSProperties>();
-  const { getPosition } = usePosition(targetRef, tooltipRef);
+  const { getPosition } = usePosition(pivotRef, targetRef);
 
   useLayoutEffect(() => {
     if (isShow) {
@@ -61,7 +61,7 @@ const Tooltip = ({
     <>
       <div
         className='tooltip-wrapper'
-        ref={targetRef}
+        ref={pivotRef}
         onMouseEnter={showTooltip}
         onMouseLeave={hideTooltip}>
         {children}
@@ -70,7 +70,7 @@ const Tooltip = ({
         !disable &&
         createPortal(
           <div
-            ref={tooltipRef}
+            ref={targetRef}
             className='tooltip-box'
             style={style}
             onMouseEnter={showTooltip}
