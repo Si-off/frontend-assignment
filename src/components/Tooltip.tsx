@@ -71,6 +71,7 @@ const Tooltip = ({
         !disable &&
         createPortal(
           <div
+            role='tooltip'
             ref={targetRef}
             className='tooltip-box'
             style={style}
