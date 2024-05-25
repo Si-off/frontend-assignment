@@ -15,48 +15,42 @@ type Direction =
   | 'leftBottom';
 
 const usePosition = (
-  targetRef: React.RefObject<HTMLElement>,
-  tooltipRef: React.RefObject<HTMLElement>
+  pivotRef: React.RefObject<HTMLElement>,
+  targetRef: React.RefObject<HTMLElement>
 ) => {
   const getPosition = useCallback(
     (dir: Direction, gap: number = 10) => {
-      const position = { x: 0, y: 0 };
-      if (!targetRef.current || !tooltipRef.current) return position;
+      if (!pivotRef.current || !targetRef.current) return { x: 0, y: 0 };
 
+      const pivotRect = pivotRef.current.getBoundingClientRect();
       const targetRect = targetRef.current.getBoundingClientRect();
-      const tooltipRect = tooltipRef.current.getBoundingClientRect();
 
-      const { top, bottom, left, right, width, height } = targetRect;
-
+      const { top, bottom, left, right, width, height } = pivotRect;
       const pivotCenterX = left + width / 2;
       const pivotCenterY = top + height / 2;
+      const targetCenterX = targetRect.width / 2;
+      const targetCenterY = targetRect.height / 2;
 
-      const targetCenterX = tooltipRect.width / 2;
-      const targetCenterY = tooltipRect.height / 2;
-
-      const directionMap: Record<Direction, [number, number]> = {
-        top: [pivotCenterX - targetCenterX, top - tooltipRect.height - gap],
-        topLeft: [left, top - tooltipRect.height - gap],
-        topRight: [right - tooltipRect.width, top - tooltipRect.height - gap],
-        right: [right + gap, pivotCenterY - targetCenterY],
-        rightTop: [right + gap, top],
-        rightBottom: [right + gap, bottom - tooltipRect.height],
-        bottom: [pivotCenterX - targetCenterX, bottom + gap],
-        bottomLeft: [left, bottom + gap],
-        bottomRight: [right - tooltipRect.width, bottom + gap],
-        left: [left - tooltipRect.width - gap, pivotCenterY - targetCenterY],
-        leftTop: [left - tooltipRect.width - gap, top],
-        leftBottom: [left - tooltipRect.width - gap, bottom - tooltipRect.height],
+      const directionMap: Record<Direction, { x: number; y: number }> = {
+        top: { x: pivotCenterX - targetCenterX, y: top - targetRect.height - gap },
+        topLeft: { x: left, y: top - targetRect.height - gap },
+        topRight: { x: right - targetRect.width, y: top - targetRect.height - gap },
+        right: { x: right + gap, y: pivotCenterY - targetCenterY },
+        rightTop: { x: right + gap, y: top },
+        rightBottom: { x: right + gap, y: bottom - targetRect.height },
+        bottom: { x: pivotCenterX - targetCenterX, y: bottom + gap },
+        bottomLeft: { x: left, y: bottom + gap },
+        bottomRight: { x: right - targetRect.width, y: bottom + gap },
+        left: { x: left - targetRect.width - gap, y: pivotCenterY - targetCenterY },
+        leftTop: { x: left - targetRect.width - gap, y: top },
+        leftBottom: { x: left - targetRect.width - gap, y: bottom - targetRect.height },
       };
 
-      [position.x, position.y] = directionMap[dir] || [
-        pivotCenterX - targetCenterX,
-        pivotCenterY - targetCenterY,
-      ];
-
-      return position;
+      return (
+        directionMap[dir] || { x: pivotCenterX - targetCenterX, y: pivotCenterY - targetCenterY }
+      );
     },
-    [targetRef, tooltipRef]
+    [pivotRef, targetRef]
   );
 
   return { getPosition };
