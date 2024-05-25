@@ -30,6 +30,7 @@ type Direction =
 const Tooltip = ({
   children,
   content,
+  gap,
   disable = false,
   dir = 'bottom',
   enterDelay = 0,
@@ -44,10 +45,10 @@ const Tooltip = ({
 
   useLayoutEffect(() => {
     if (isShow) {
-      const { x, y } = getPosition(dir);
+      const { x, y } = getPosition(dir, gap);
       setStyle({ transform: `translate(${x}px, ${y}px)` });
     }
-  }, [dir, getPosition, isShow]);
+  }, [dir, gap, getPosition, isShow]);
 
   const showTooltip = () => {
     setShow(true, enterDelay);
