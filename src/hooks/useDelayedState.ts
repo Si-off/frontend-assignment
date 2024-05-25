@@ -17,7 +17,7 @@ const useDelayedState = <T>(initialState?: T) => {
       clearTimeout(timeoutIdRef.current);
     }
 
-    if (delay) {
+    if (delay && 0 < delay) {
       const id = setTimeout(() => {
         setState(newState);
       }, delay);
