@@ -19,7 +19,7 @@ const usePosition = (
   targetRef: React.RefObject<HTMLElement>
 ) => {
   const getPosition = useCallback(
-    (dir: Direction = 'bottom', gap: number = 10) => {
+    (dir: Direction = 'bottom', gap: number = 0) => {
       if (!pivotRef.current || !targetRef.current) return { x: 0, y: 0 };
       const pivotRect = pivotRef.current.getBoundingClientRect();
       const targetRect = targetRef.current.getBoundingClientRect();

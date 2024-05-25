@@ -30,7 +30,7 @@ type Direction =
 const Tooltip = ({
   children,
   content,
-  gap,
+  gap = 10,
   disable = false,
   dir = 'bottom',
   enterDelay = 0,
