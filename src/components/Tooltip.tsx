@@ -59,7 +59,11 @@ const Tooltip = ({
 
   return (
     <>
-      <div ref={targetRef} onMouseEnter={showTooltip} onMouseLeave={hideTooltip}>
+      <div
+        className='tooltip-wrapper'
+        ref={targetRef}
+        onMouseEnter={showTooltip}
+        onMouseLeave={hideTooltip}>
         {children}
       </div>
       {isShow &&
