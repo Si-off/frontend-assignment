@@ -60,9 +60,6 @@ const Tooltip = ({
     setShow(false, leaveDelay);
   };
 
-  const isJSXElement = React.isValidElement(content);
-  const tailStyle = isJSXElement ? { color: content.props.style?.backgroundColor } : {};
-
   return (
     <>
       <div
@@ -83,7 +80,7 @@ const Tooltip = ({
             onMouseEnter={interactive ? showTooltip : undefined}
             onMouseLeave={interactive ? hideTooltip : undefined}>
             <div className={React.isValidElement(content) ? '' : 'tooltip-content'}>
-              <span className={`tail ${dir}`} style={tailStyle} />
+              {!React.isValidElement(content) && <span className={`tail ${dir}`} />}
               {content}
             </div>
           </div>,

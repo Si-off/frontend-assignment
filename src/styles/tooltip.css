@@ -9,10 +9,10 @@
 }
 
 .tooltip-content {
+  padding: 8px;
   border-radius: 4px;
   background-color: black;
   color: white;
-  padding: 8px;
 }
 
 /* tooltip tails */
