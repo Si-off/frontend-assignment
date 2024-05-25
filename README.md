@@ -1,3 +1,7 @@
+# FE 과제 테스트
+
+- [배포 링크](https://frontend-assignment-brown-iota.vercel.app/)
+
 ## 설치 및 실행
 
 ### 요구 사항
