@@ -58,6 +58,11 @@
   justify-content: space-between;
 }
 
+.item-wrapper--mid div:first-child {
+  display: flex;
+  flex-direction: column;
+}
+
 .item-wrapper--mid div:last-child {
   display: flex;
   flex-direction: column;

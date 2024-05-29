@@ -4,7 +4,7 @@ import '@/styles/tooltip.css';
 import { useDelayedState, usePosition } from '@/hooks';
 
 interface Props {
-  children: React.ReactNode;
+  children: React.ReactElement;
   content: React.ReactNode;
   dir?: Direction;
   enterDelay?: number;
@@ -62,13 +62,12 @@ const Tooltip = ({
 
   return (
     <>
-      <div
-        className='tooltip-wrapper'
-        ref={pivotRef}
-        onMouseEnter={showTooltip}
-        onMouseLeave={hideTooltip}>
-        {children}
-      </div>
+      {React.cloneElement(children, {
+        className: 'tooltip-wrapper',
+        ref: pivotRef,
+        onMouseEnter: showTooltip,
+        onMouseLeave: hideTooltip,
+      })}
       {isShow &&
         !disable &&
         createPortal(
