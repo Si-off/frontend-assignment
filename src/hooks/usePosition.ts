@@ -30,34 +30,70 @@ const usePosition = (
       const targetCenterX = targetRect.width / 2;
       const targetCenterY = targetRect.height / 2;
 
+      const scrollX = window.scrollX;
+      const scrollY = window.scrollY;
+
+      let x = 0;
+      let y = 0;
+
       switch (dir) {
         case 'top':
-          return { x: pivotCenterX - targetCenterX, y: top - targetRect.height - gap };
+          x = pivotCenterX - targetCenterX;
+          y = top - targetRect.height - gap;
+          break;
         case 'topLeft':
-          return { x: left, y: top - targetRect.height - gap };
+          x = left;
+          y = top - targetRect.height - gap;
+          break;
         case 'topRight':
-          return { x: right - targetRect.width, y: top - targetRect.height - gap };
+          x = right - targetRect.width;
+          y = top - targetRect.height - gap;
+          break;
         case 'right':
-          return { x: right + gap, y: pivotCenterY - targetCenterY };
+          x = right + gap;
+          y = pivotCenterY - targetCenterY;
+          break;
         case 'rightTop':
-          return { x: right + gap, y: top };
+          x = right + gap;
+          y = top;
+          break;
         case 'rightBottom':
-          return { x: right + gap, y: bottom - targetRect.height };
+          x = right + gap;
+          y = bottom - targetRect.height;
+          break;
         case 'bottom':
-          return { x: pivotCenterX - targetCenterX, y: bottom + gap };
+          x = pivotCenterX - targetCenterX;
+          y = bottom + gap;
+          break;
         case 'bottomLeft':
-          return { x: left, y: bottom + gap };
+          x = left;
+          y = bottom + gap;
+          break;
         case 'bottomRight':
-          return { x: right - targetRect.width, y: bottom + gap };
+          x = right - targetRect.width;
+          y = bottom + gap;
+          break;
         case 'left':
-          return { x: left - targetRect.width - gap, y: pivotCenterY - targetCenterY };
+          x = left - targetRect.width - gap;
+          y = pivotCenterY - targetCenterY;
+          break;
         case 'leftTop':
-          return { x: left - targetRect.width - gap, y: top };
+          x = left - targetRect.width - gap;
+          y = top;
+          break;
         case 'leftBottom':
-          return { x: left - targetRect.width - gap, y: bottom - targetRect.height };
+          x = left - targetRect.width - gap;
+          y = bottom - targetRect.height;
+          break;
         default:
-          return { x: pivotCenterX - targetCenterX, y: pivotCenterY - targetCenterY };
+          x = pivotCenterX - targetCenterX;
+          y = pivotCenterY - targetCenterY;
       }
+
+      return {
+        x: x + scrollX,
+        y: y + scrollY,
+      };
     },
     [pivotRef, targetRef]
   );
